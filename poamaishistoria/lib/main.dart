@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:barcode_scan/barcode_scan.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 void main() => runApp(MyApp());
 
@@ -216,27 +215,6 @@ class _MarkerOpenState extends State<MarkerOpen> {
 
   Markers marker;
 
-  String barcode = "";
-
-  Future scan() async {
-    try {
-      String barcode = await BarcodeScanner.scan();
-      setState(() => this.barcode = barcode);
-    } on PlatformException catch (e) {
-      if (e.code == BarcodeScanner.CameraAccessDenied) {
-        setState(() {
-          this.barcode = 'No camera permission!';
-        });
-      } else {
-        setState(() => this.barcode = 'Unknown error: $e');
-      }
-    } on FormatException {
-      setState(() => this.barcode =
-      'Nothing captured.');
-    } catch (e) {
-      setState(() => this.barcode = 'Unknown error: $e');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -255,26 +233,25 @@ class _MarkerOpenState extends State<MarkerOpen> {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(top: 10),
-                child: new Image.asset(marker.pathFoto, height: 200, width:  MediaQuery.of(context).size.width,),
+                child: CarouselSlider(
+                  height: 400.0,
+                  items: [Image.asset(marker.pathFoto, height: 200, width: MediaQuery.of(context).size.width ,),Image.asset(marker.pathFoto, height: 200, width: MediaQuery.of(context).size.width ,),3,4,5].map((i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.symmetric(horizontal: 5.0),
+                            decoration: BoxDecoration(
+                                color: Colors.amber
+                            ),
+                            child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+                        );
+                      },
+                    );
+                  }).toList(),
+                )
+                //new Image.asset(marker.pathFoto, height: 200, width: MediaQuery.of(context).size.width ,),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 60),
-                child: MaterialButton(
-                    minWidth: 275,
-                    color: Color(0xFFfa9015),
-                    height: 50,
-                    elevation: 4,
-                    child: Text(
-                      "Ler QRCode",
-                      style:
-                      TextStyle(fontSize: 16.0, color: Colors.white),
-                    ),
-                    onPressed: () {
-                      scan();
-                    }),
-              ),
-              new Text(barcode),
 
             ],
           )),

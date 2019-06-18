@@ -14,7 +14,6 @@
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDwODfH4qok-WV8y5FM8oMmf1ID_uxlGbs"/>
-        <activity android:name="com.apptreesoftware.barcodescan.BarcodeScannerActivity"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
