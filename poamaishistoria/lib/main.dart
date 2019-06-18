@@ -227,24 +227,31 @@ class _MarkerOpenState extends State<MarkerOpen> {
         title: Text(marker.nome),
 
       ),
+      //https://github.com/serenader2014/flutter_carousel_slider/blob/master/example/lib/main.dart
       body:SafeArea(
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 00),
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 10),
+                padding: EdgeInsets.only(top: 0),
                 child: CarouselSlider(
-                  height: 400.0,
-                  items: [Image.asset(marker.pathFoto, height: 200, width: MediaQuery.of(context).size.width ,),Image.asset(marker.pathFoto, height: 200, width: MediaQuery.of(context).size.width ,),3,4,5].map((i) {
+                  height: 300.0,
+                  autoPlay: true,
+
+                  autoPlayInterval: Duration(seconds: 3),
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  pauseAutoPlayOnTouch: Duration(seconds: 10),
+                  enlargeCenterPage: true,
+                  items: ["",Image.asset(marker.pathFoto, height: 200, width: MediaQuery.of(context).size.width ,),3,4,5].map((i) {
                     return Builder(
+
                       builder: (BuildContext context) {
                         return Container(
+
                             width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(horizontal: 5.0),
-                            decoration: BoxDecoration(
-                                color: Colors.amber
-                            ),
-                            child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+
+                            child: Image.asset(marker.pathFoto),
                         );
                       },
                     );
