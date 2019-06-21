@@ -82,10 +82,7 @@ class _InitPageState extends State<MyStatelessWidget> {
                           child:  FloatingActionButton(
                             heroTag: "btn5",
                             onPressed: (){
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => StatelessInfo()),
-                              );
+                              _launchURL();
                             },
                             materialTapTargetSize: MaterialTapTargetSize.padded,
                             backgroundColor: Colors.deepOrange,
