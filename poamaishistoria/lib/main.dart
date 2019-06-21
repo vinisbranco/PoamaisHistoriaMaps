@@ -80,7 +80,7 @@ class _InitPageState extends State<MyStatelessWidget> {
                       ),
                       Container(
                           child:  FloatingActionButton(
-                            heroTag: "btn4",
+                            heroTag: "btn5",
                             onPressed: (){
                               Navigator.push(
                                 context,
