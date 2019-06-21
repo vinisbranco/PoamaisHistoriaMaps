@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
+      debugShowCheckedModeBanner: false,
       home: MyStatelessWidget(),
     );
   }
@@ -41,54 +42,71 @@ class _InitPageState extends State<MyStatelessWidget> {
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(top: 50),
+                  padding: EdgeInsets.only(top: 10),
                   child: Image.asset('assets/POA+história.png'),
                 ),
 
                 Container(
                   padding: EdgeInsets.only(top: 20),
-                  child: new Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  child: new Column(
+
 
                     children: <Widget>[
-                      Container(
-                          child: FloatingActionButton(
-                            heroTag: "btn3",
-                            onPressed: (){
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => StatelessMap()),
-                              ); },
-                            materialTapTargetSize: MaterialTapTargetSize.padded,
-                            backgroundColor: Colors.deepOrange,
-                            child: const Icon(Icons.map, size:35.5),
-                          )),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child:Container(
+                          width: 170,
+                            child: FloatingActionButton.extended(
+                              label: Text('Abrir Mapa') ,
+                              heroTag: "btn3",
+                              onPressed: (){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => StatelessMap()),
+                                ); },
 
-                      Container(
-                          child:  FloatingActionButton(
-                            heroTag: "btn4",
-                            onPressed: (){
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => StatelessInfo()),
-                              );
-                            },
-                            materialTapTargetSize: MaterialTapTargetSize.padded,
-                            backgroundColor: Colors.deepOrange,
-                            child: const Icon(Icons.info_outline, size:35.5),
+                              backgroundColor: Colors.deepOrange,
+                              icon: const Icon(Icons.map, size:35.5),
+                            )) ,
+                      ),
+
+                      Padding(
+                          padding: EdgeInsets.only(bottom: 10),
+                          child: Container(
+                              width: 170,
+                              child:  FloatingActionButton.extended(
+                                label: Text('Sobre nós') ,
+                                heroTag: "btn4",
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => StatelessInfo()),
+                                  );
+                                },
+                                materialTapTargetSize: MaterialTapTargetSize.padded,
+                                backgroundColor: Colors.deepOrange,
+                                icon: const Icon(Icons.info_outline, size:35.5),
+                              )
                           )
                       ),
-                      Container(
-                          child:  FloatingActionButton(
-                            heroTag: "btn5",
-                            onPressed: (){
-                              _launchURL();
-                            },
-                            materialTapTargetSize: MaterialTapTargetSize.padded,
-                            backgroundColor: Colors.deepOrange,
-                            child: Image.asset('assets/instagram-icon.png',scale: 10,),
+
+                      Padding(
+                          padding: EdgeInsets.only(bottom: 10),
+                          child: Container(
+                              width: 170,
+                              child:  FloatingActionButton.extended(
+                                label: Text("Instagram", ),
+                                heroTag: "btn5",
+                                onPressed: (){
+                                  _launchURL();
+                                },
+                                materialTapTargetSize: MaterialTapTargetSize.padded,
+                                backgroundColor: Colors.deepOrange,
+                                icon: new Image.asset('assets/instagram-icon.png',scale: 10),
+                              )
                           )
                       ),
+
                     ],
                   ),
                 ),
@@ -145,11 +163,11 @@ class _InfoPageState extends State<StatelessInfo> {
                 ),
 
                 MaterialButton(
-                  color: Colors.deepOrange,
+                    color: Colors.deepOrange,
                     child: Text("Voltar", style: TextStyle(color: Colors.white),),
                     onPressed: (){
-            Navigator.pop(context);
-            })
+                      Navigator.pop(context);
+                    })
 
 
 
@@ -231,7 +249,7 @@ class _Map extends State<StatelessMap>{
     });
   }
   static final List<Markers> pins = <Markers>[
-    Markers(1,-30.057999, -51.175179, "FAMECOS", ['assets/famecos.jpg'], "Avenida Ipiranga 6681 - Prédio 7 - Partenon", "Faculda de Cominucação da PUCRS" ),
+    Markers(1,-30.057999, -51.175179, "FAMECOS", ['assets/famecos.jpg', 'assets/famecosAntiga.jpg'], "Avenida Ipiranga 6681 - Prédio 7 - Partenon", "Em 1965, surgia na PUCRS — Pontifícia Universidade Católica do Rio Grande do Sul, a Famecos — Faculdade dos Meios de Comunicação Social. A raiz dessa criação foi o Jornalismo, ativado em 1952, junto à Faculdade de Filosofia. Em 1964, o curso foi desmembrado da Filosofia, surgindo a Escola de Jornalismo. No ano seguinte, com a criação do curso universitário de Publicidade e Propaganda (o 1º do Brasil), entendeu-se que era possível criar uma faculdade voltada para a comunicação social. Nesse mesmo ano, em 1º de dezembro, a até então Escola de Jornalismo passou a se chamar Faculdade dos Meios de Comunicação Social. Em 1967, com o lançamento do curso de Relações Públicas, o segundo do Brasil, a faculdade dá um salto e o ensino de comunicação se torna polivalente. João Guilherme Barone, com 22 anos de Famecos, é o atual diretor. Ao se referir sobre essa época, Barone comenta que “naquele momento, esse pensamento da comunicação social reunindo essas três áreas, possibilitou uma definição de caminho da faculdade, considerando que esses eram estudos relativamente novos”. Ainda fazem parte da história da Famecos os cursos de Turismo, criado em 1971, Tecnologia em Produção Audiovisual e Hotelaria, de 2004. No decorrer desses 50 anos, surgiram diversos laboratórios, dentre os quais o de Jornalismo Gráfico, Foto, Cinema, Televisão, Publicidade e Propaganda, Relações Públicas, Eventos, Imagem Digital e outros. Além disso, foram instalados programas de Mestrado e Doutorado, Programa de Pós Graduação, Agências Experimentais e o Festival de Laboratórios em Comunicação — SET Universitário." ),
     Markers(2,-30.103138, -51.235952, "Restaurante", ['assets/divino.jpg','assets/famecos.jpg'], "Av. Otto Niemeyer, 2364 - Tristeza", "Performing hot restart..Syncing files to device Moto G 5S...I/Choreographer(25728): Skipped 46 frames!  The application may be doing too much work on its main thread.I/Adreno  (25728): DequeueBuffer: dequeueBuffer failedI/Adreno  (25728): DequeueBuffer: dequeueBuffer failed I/Adreno  (25728): DequeueBuffer: dequeueBuffer failed W/OpenGLRenderer(25728): swapBuffers encountered EGL error 12301 on 0x8b17b898, halting rendering... Restarted application in 4.942ms. I/flutter (25728): {Marker{markerId: MarkerId{value: FAMECOS}, alpha: 1.0, anchor: Offset(0.5, 1.0), consumeTapEvents: false, draggable: false, flat: false, icon: Instance of 'BitmapDescriptor', infoWindow: InfoWindow{title: FAMECOS, snippet: Avenida Ipiranga 6681 - Prédio 7 - Partenon, anchor: Offset(0.5, 0.0)}, position: LatLng(-30.057999, -51.175179000000014), rotation: 0.0, visible: true, zIndex: 0.0, onTap: Closure: () => Null}, Marker{markerId: MarkerId{value: Restaurante}, alpha: 1.0, anchor: Offset(0.5, 1.0), consumeTapEvents: false, draggable: false, flat: false, icon: Instance of 'BitmapDescriptor', infoWindow: InfoWindow{title: Restaurante, snippet: Av. Otto Niemeyer, 2364 - Tristeza, anchor: Offset(0.5, 0.0)}, position: LatLng(-30.103138, -51.235952), rotation: 0.0, visible: true, zIndex: 0.0, onTap: Closure: () => Null}} I/flutter (25728): {Marker{markerId: MarkerId{value: FAMECOS}, alpha: 1.0, anchor: Offset(0.5, 1.0), consumeTapEvents: false, draggable: false, flat: false, icon: Instance of 'BitmapDescriptor', infoWindow: InfoWindow{title: FAMECOS, snippet: Avenida Ipiranga 6681 - Prédio 7 - Partenon, anchor: Offset(0.5, 0.0)}, position: LatLng(-30.057999, -51.175179000000014), rotation: 0.0, visible: true, zIndex: 0.0, onTap: Closure: () => Null}, Marker{markerId: MarkerId{value: Restaurante}, alpha: 1.0, anchor: Offset(0.5, 1.0), consumeTapEvents: false, draggable: false, flat: false, icon: Instance of 'BitmapDescriptor', infoWindow: InfoWindow{title: Restaurante, snippet: Av. Otto Niemeyer, 2364 - Tristeza, anchor: Offset(0.5, 0.0)}, position: LatLng(-30.103138, -51.235952), rotation: 0.0, visible: true, zIndex: 0.0, onTap: Closure: () => Null}} I/flutter (25728): LatLng(-29.9651137, -50.11878530000001) I/Google Maps Android API(25728): Google Play services package version: 14366018 I/zygote  (25728): Compiler allocated 4MB to compile void android.widget.TextView.<init>(android.content.Context, android.util.AttributeSet, int, int) I/zygote  (25728): Do full code cache collection, code=1014KB, data=718KB I/zygote  (25728): After code cache collection, code=1011KB, data=654KB I/flutter (25728): Marker: [assets/divino.jpg, assets/famecos.jpg]")
   ];
 
@@ -277,6 +295,13 @@ class _Map extends State<StatelessMap>{
   void _onMapCreated(GoogleMapController controller) {
     _controller.complete(controller);
   }
+  void _changeClickMarker(LatLng c){
+    setState(() {
+      clickMarker = false;
+    });
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -306,6 +331,7 @@ class _Map extends State<StatelessMap>{
       return MaterialApp(
         home: Scaffold(
           appBar: AppBar(
+            leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: (){Navigator.pop(context);}),
             title: Text('POA+HISTÓRIA'),
             backgroundColor: Colors.deepOrange,
           ),
@@ -321,6 +347,7 @@ class _Map extends State<StatelessMap>{
                 markers: _markers,
                 onCameraMove: _onCameraMove,
                 myLocationEnabled: true,
+                onTap:_changeClickMarker,
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -338,7 +365,8 @@ class _Map extends State<StatelessMap>{
                       SizedBox(height: 16.0),
                       (clickMarker)
                           ?
-                      FloatingActionButton(
+                      FloatingActionButton.extended(
+                        label: Text("Informações"),
                         heroTag: "btn2",
                         onPressed: (){ Navigator.push(
                           context,
@@ -346,7 +374,7 @@ class _Map extends State<StatelessMap>{
                         );},
                         materialTapTargetSize: MaterialTapTargetSize.padded,
                         backgroundColor: Colors.deepOrange,
-                        child: const Icon(Icons.info_outline, size: 36.0),
+                        icon: const Icon(Icons.info_outline, size: 36.0),
                       )
                           :
                       Text("")

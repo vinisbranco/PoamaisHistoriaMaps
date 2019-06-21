@@ -10,7 +10,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="poamaishistoria"
+        android:label="PoaMaisHistoria"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDwODfH4qok-WV8y5FM8oMmf1ID_uxlGbs"/>
