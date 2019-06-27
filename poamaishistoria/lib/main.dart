@@ -8,26 +8,30 @@ import 'package:url_launcher/url_launcher.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  static const String _title = 'Poamaishistoria';
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+      title: 'PoaMaisHistória',
+      theme: ThemeData(
+        primarySwatch: Colors.deepOrange,
+        hintColor: Colors.white,
+        unselectedWidgetColor: Colors.white,
+      ),
+      home: MyHomePage(),
       debugShowCheckedModeBanner: false,
-      home: MyStatelessWidget(),
     );
   }
 }
 
 /// This is the stateless widget that the main application instantiates.
-class MyStatelessWidget extends StatefulWidget {
-  MyStatelessWidget({Key key}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key}) : super(key: key);
   @override
   _InitPageState createState() => _InitPageState();
 }
 
-class _InitPageState extends State<MyStatelessWidget> {
+class _InitPageState extends State<MyHomePage> {
   _InitPageState({Key key});
 
   @override
@@ -36,83 +40,87 @@ class _InitPageState extends State<MyStatelessWidget> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.white,
-        body: Padding(padding: EdgeInsets.all(10),
-          child: Align(
-            alignment: Alignment.center,
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Image.asset('assets/POA+história.png'),
-                ),
-
-                Container(
-                  padding: EdgeInsets.only(top: 20),
-                  child: new Column(
-
-
+        body: ListView(
+            children: <Widget>[
+              Padding(padding: EdgeInsets.all(10),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child:Container(
-                          width: 170,
-                            child: FloatingActionButton.extended(
-                              label: Text('Abrir Mapa') ,
-                              heroTag: "btn3",
-                              onPressed: (){
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => StatelessMap()),
-                                ); },
-
-                              backgroundColor: Colors.deepOrange,
-                              icon: const Icon(Icons.map, size:35.5),
-                            )) ,
+                        padding: EdgeInsets.only(top: 10),
+                        child: Image.asset('assets/POA+história.png'),
                       ),
 
-                      Padding(
-                          padding: EdgeInsets.only(bottom: 10),
-                          child: Container(
-                              width: 170,
-                              child:  FloatingActionButton.extended(
-                                label: Text('Sobre nós') ,
-                                heroTag: "btn4",
-                                onPressed: (){
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => StatelessInfo()),
-                                  );
-                                },
-                                materialTapTargetSize: MaterialTapTargetSize.padded,
-                                backgroundColor: Colors.deepOrange,
-                                icon: const Icon(Icons.info_outline, size:35.5),
-                              )
-                          )
-                      ),
+                      Container(
+                        padding: EdgeInsets.only(top: 20),
+                        child: new Column(
 
-                      Padding(
-                          padding: EdgeInsets.only(bottom: 10),
-                          child: Container(
-                              width: 170,
-                              child:  FloatingActionButton.extended(
-                                label: Text("Instagram", ),
-                                heroTag: "btn5",
-                                onPressed: (){
-                                  _launchURL();
-                                },
-                                materialTapTargetSize: MaterialTapTargetSize.padded,
-                                backgroundColor: Colors.deepOrange,
-                                icon: new Image.asset('assets/instagram-icon.png',scale: 10),
-                              )
-                          )
-                      ),
 
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 10),
+                              child:Container(
+                                  width: 170,
+                                  child: FloatingActionButton.extended(
+                                    label: Text('Abrir Mapa') ,
+                                    heroTag: "btn3",
+                                    onPressed: (){
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => StatelessMap()),
+                                      ); },
+
+                                    backgroundColor: Colors.deepOrange,
+                                    icon: const Icon(Icons.map, size:35.5),
+                                  )) ,
+                            ),
+
+                            Padding(
+                                padding: EdgeInsets.only(bottom: 10),
+                                child: Container(
+                                    width: 170,
+                                    child:  FloatingActionButton.extended(
+                                      label: Text('Sobre nós') ,
+                                      heroTag: "btn4",
+                                      onPressed: (){
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => StatelessInfo()),
+                                        );
+                                      },
+                                      materialTapTargetSize: MaterialTapTargetSize.padded,
+                                      backgroundColor: Colors.deepOrange,
+                                      icon: const Icon(Icons.info_outline, size:35.5),
+                                    )
+                                )
+                            ),
+
+                            Padding(
+                                padding: EdgeInsets.only(bottom: 10),
+                                child: Container(
+                                    width: 170,
+                                    child:  FloatingActionButton.extended(
+                                      label: Text("Instagram", ),
+                                      heroTag: "btn5",
+                                      onPressed: (){
+                                        _launchURL();
+                                      },
+                                      materialTapTargetSize: MaterialTapTargetSize.padded,
+                                      backgroundColor: Colors.deepOrange,
+                                      icon: new Image.asset('assets/instagram-icon.png',scale: 10),
+                                    )
+                                )
+                            ),
+
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
-              ],
-            ),
-          ),
+              ),
+            ]
         ),
       ),
     );
@@ -250,7 +258,7 @@ class _Map extends State<StatelessMap>{
   }
   static final List<Markers> pins = <Markers>[
     Markers(1,-30.057999, -51.175179, "FAMECOS", ['assets/famecos.jpg', 'assets/famecosAntiga.jpg'], "Avenida Ipiranga 6681 - Prédio 7 - Partenon", "Em 1965, surgia na PUCRS — Pontifícia Universidade Católica do Rio Grande do Sul, a Famecos — Faculdade dos Meios de Comunicação Social. A raiz dessa criação foi o Jornalismo, ativado em 1952, junto à Faculdade de Filosofia. Em 1964, o curso foi desmembrado da Filosofia, surgindo a Escola de Jornalismo. No ano seguinte, com a criação do curso universitário de Publicidade e Propaganda (o 1º do Brasil), entendeu-se que era possível criar uma faculdade voltada para a comunicação social. Nesse mesmo ano, em 1º de dezembro, a até então Escola de Jornalismo passou a se chamar Faculdade dos Meios de Comunicação Social. Em 1967, com o lançamento do curso de Relações Públicas, o segundo do Brasil, a faculdade dá um salto e o ensino de comunicação se torna polivalente. João Guilherme Barone, com 22 anos de Famecos, é o atual diretor. Ao se referir sobre essa época, Barone comenta que “naquele momento, esse pensamento da comunicação social reunindo essas três áreas, possibilitou uma definição de caminho da faculdade, considerando que esses eram estudos relativamente novos”. Ainda fazem parte da história da Famecos os cursos de Turismo, criado em 1971, Tecnologia em Produção Audiovisual e Hotelaria, de 2004. No decorrer desses 50 anos, surgiram diversos laboratórios, dentre os quais o de Jornalismo Gráfico, Foto, Cinema, Televisão, Publicidade e Propaganda, Relações Públicas, Eventos, Imagem Digital e outros. Além disso, foram instalados programas de Mestrado e Doutorado, Programa de Pós Graduação, Agências Experimentais e o Festival de Laboratórios em Comunicação — SET Universitário." ),
-    Markers(2,-30.103138, -51.235952, "Restaurante", ['assets/divino.jpg','assets/famecos.jpg'], "Av. Otto Niemeyer, 2364 - Tristeza", "Performing hot restart..Syncing files to device Moto G 5S...I/Choreographer(25728): Skipped 46 frames!  The application may be doing too much work on its main thread.I/Adreno  (25728): DequeueBuffer: dequeueBuffer failedI/Adreno  (25728): DequeueBuffer: dequeueBuffer failed I/Adreno  (25728): DequeueBuffer: dequeueBuffer failed W/OpenGLRenderer(25728): swapBuffers encountered EGL error 12301 on 0x8b17b898, halting rendering... Restarted application in 4.942ms. I/flutter (25728): {Marker{markerId: MarkerId{value: FAMECOS}, alpha: 1.0, anchor: Offset(0.5, 1.0), consumeTapEvents: false, draggable: false, flat: false, icon: Instance of 'BitmapDescriptor', infoWindow: InfoWindow{title: FAMECOS, snippet: Avenida Ipiranga 6681 - Prédio 7 - Partenon, anchor: Offset(0.5, 0.0)}, position: LatLng(-30.057999, -51.175179000000014), rotation: 0.0, visible: true, zIndex: 0.0, onTap: Closure: () => Null}, Marker{markerId: MarkerId{value: Restaurante}, alpha: 1.0, anchor: Offset(0.5, 1.0), consumeTapEvents: false, draggable: false, flat: false, icon: Instance of 'BitmapDescriptor', infoWindow: InfoWindow{title: Restaurante, snippet: Av. Otto Niemeyer, 2364 - Tristeza, anchor: Offset(0.5, 0.0)}, position: LatLng(-30.103138, -51.235952), rotation: 0.0, visible: true, zIndex: 0.0, onTap: Closure: () => Null}} I/flutter (25728): {Marker{markerId: MarkerId{value: FAMECOS}, alpha: 1.0, anchor: Offset(0.5, 1.0), consumeTapEvents: false, draggable: false, flat: false, icon: Instance of 'BitmapDescriptor', infoWindow: InfoWindow{title: FAMECOS, snippet: Avenida Ipiranga 6681 - Prédio 7 - Partenon, anchor: Offset(0.5, 0.0)}, position: LatLng(-30.057999, -51.175179000000014), rotation: 0.0, visible: true, zIndex: 0.0, onTap: Closure: () => Null}, Marker{markerId: MarkerId{value: Restaurante}, alpha: 1.0, anchor: Offset(0.5, 1.0), consumeTapEvents: false, draggable: false, flat: false, icon: Instance of 'BitmapDescriptor', infoWindow: InfoWindow{title: Restaurante, snippet: Av. Otto Niemeyer, 2364 - Tristeza, anchor: Offset(0.5, 0.0)}, position: LatLng(-30.103138, -51.235952), rotation: 0.0, visible: true, zIndex: 0.0, onTap: Closure: () => Null}} I/flutter (25728): LatLng(-29.9651137, -50.11878530000001) I/Google Maps Android API(25728): Google Play services package version: 14366018 I/zygote  (25728): Compiler allocated 4MB to compile void android.widget.TextView.<init>(android.content.Context, android.util.AttributeSet, int, int) I/zygote  (25728): Do full code cache collection, code=1014KB, data=718KB I/zygote  (25728): After code cache collection, code=1011KB, data=654KB I/flutter (25728): Marker: [assets/divino.jpg, assets/famecos.jpg]")
+    Markers(2,-30.027717, -51.227780, "Mercado Público de Porto Alegre", ['assets/mercado público.jpg','assets/mercado5-np.jpg', 'assets/mercado1.jpg','assets/MercadoPublico2.jpg','assets/MercadoPublico3.jpg'], "      Centro Histórico, Porto Alegre - RS", "O Mercado Público foi construído em 1869 com o objetivo de abrigar os comerciantes que vinham trabalhar em Porto Alegre. O prédio chegou a sobreviver à grande enchente de Porto Alegre, em 1941 e à quatro grandes incêndios, tendo o último ocorrido em 2013. \n     Entretanto, existem significados maiores para o Mercado do que ser apenas um centro comercial. Ele é um dos pontos mais importante para as religiosidades de matriz africana que estão presentes na cidade até hoje. Desde sua construção ele é considerado um ponto com grande concentração de  energia.  Essa crença era sustentada por trabalhadores escravizados, que fizeram um assentamento no local, transformando-o em um lugar sagrado, onde seus ritos poderiam ser respeitados mesmo em épocas de intolerância religiosa.\n      As fontes históricas divergem quanto a esse assentamento do Bará (nome dado a energia que se acreditava estar naquele local) em questões como quem o fez e onde foi feito. Não há confirmação sobre sua formação, já que ela pode ter sido feita por trabalhadores negros, pelo Príncipe Custódio. O valor simbólico desse prédio, entretanto, continua sendo muito forte, o que transforma o Mercado em um ponto primordial das religiosidades africanas em todo estado do Rio Grande do Sul.\n \n      Se você se interessou e quer saber mais sobre o assunto, nossa recomendação é o documentário “A Tradição do Bará do Mercado”. Ele está disponível, em edição completa, no Youtube.")
   ];
 
   void AddMarker() {
@@ -452,8 +460,12 @@ class _MarkerOpenState extends State<MarkerOpen> {
                   )
                 //new Image.asset(marker.pathFoto, height: 200, width: MediaQuery.of(context).size.width ,),
               ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Text(marker.nome,textAlign: TextAlign.center,style: TextStyle( fontSize: 30, letterSpacing: 0.5, color: Colors.black87,) ),
+              ),
               Padding(
-                  padding: EdgeInsets.only(left: 5,right: 5, bottom: 20),
+                  padding: EdgeInsets.only(top:20,left: 5,right: 5, bottom: 20),
                   child: Text(marker.descricao, textAlign: TextAlign.justify, style: TextStyle( fontSize: 15, letterSpacing: 0.5, color: Colors.black54),)
               ),
             ],
