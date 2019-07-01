@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "262380792131",
+    "firebase_url": "https://poamaishistoria-1560729565095.firebaseio.com",
+    "project_id": "poamaishistoria-1560729565095",
+    "storage_bucket": "poamaishistoria-1560729565095.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262380792131:android:83471ecbb5dd97f7",
+        "android_client_info": {
+          "package_name": "vbranco.poamaishistoria"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "262380792131-ctih1fhvkmot0tq8ch93h2g8e7d5ebo9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1xr9_zvYAP85Zb1rhW9G6_Td-PizYCzc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "262380792131-ctih1fhvkmot0tq8ch93h2g8e7d5ebo9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
